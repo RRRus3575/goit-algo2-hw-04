@@ -41,11 +41,14 @@ class Trie:
 
 class Homework(Trie):
     def count_words_with_suffix(self, pattern) -> int:
-        return len(self.find_words_with_suffix(pattern))
+        
+        return len(self.find_words_with_suffix(pattern)) if isinstance(pattern, str) else 0
 
     def has_prefix(self, prefix) -> bool:
-       result = self.keys_with_prefix(prefix)
-       return bool(result)
+        if not isinstance(prefix, str):  
+            return False
+        
+        return bool(self.keys_with_prefix(prefix))
 
 if __name__ == "__main__":
     trie = Homework()
